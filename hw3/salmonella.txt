@@ -1,0 +1,33 @@
+
+Created on Thu Feb 13 12:24:20 2014
+
+Below I will describe what I observe as I run my protein sequences through BLAST
+
+@author: cmouton
+
+
+The first sequence I inputted provided a lot of alignment with salmonella enterica,
+especially with the ATP sythase SpaL sequence.
+
+I am now searching for the other five sequences that I found, and will look for general
+overlays from one to the other as well as make comments about specifics that are seen in each
+one.
+
+for my second search, I working within Salmonella enterica again, except this time I am
+looking at the needle length control protein, as well as the invasion protein InvJ. The antigen
+presentation protein SpaN also has a lot of matches with my searched query.
+
+my third search yielded relationships with the type III secretion system protein, SpaP, for the salmonella
+enterica again. It sounds pretty nasty.
+
+my fourth search didn't have nearly as solid of a red block compared to the others. Again working
+within salmonella enterica, there are relationships to both the needle complex export protein and 
+the type III secretion system protein, SpaR.
+
+my fifth search again relates to a type III secretion system protein, this time looking at SpaO. 
+I wonder why we are finding so much of that type of protein. It could possibly be due to the fact 
+that those are some of the longest proteins found within salmonella enterica or the section of DNA that 
+we are looking at contains the codons for these types of proteins.
+
+my sixth and final search yielded yet another type III secretion system protein. SpaS has a fairly strong similarity
+to my submission, but not as strong as some of the others.
