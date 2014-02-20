@@ -43,6 +43,7 @@ def coding_strand_to_AA(dna):
 
     while i < len(A):                       # while loop to look at different elements in list, A
         j = 0                               # establishing initial for indexing which list in Codons to access
+        # shorthand below...
         while j < len(codons):              # while loop to look at different lists in list, codons
             templist = codons[j]            # a temporary list of codons[j]
             k = 0                           # establishing initial for indexing through this list, codons[j]
@@ -56,7 +57,17 @@ def coding_strand_to_AA(dna):
         i = i + 1                           # indexing addition for i
     return collapse(ans)                    # condense the answer into one string
 
-    
+'''
+A shorthand for your while loops above:
+
+while i < len(A):
+    j = 0
+    while j < len(codons):
+        if A[i] in codons[j]:
+            ans[i] = aa[j]
+        j += 1
+    i += 1
+'''
 
 
 def coding_strand_to_AA_unit_tests(inp,expout):
@@ -77,6 +88,8 @@ def get_reverse_complement(dna):
     i = 0                                   # establishing initial for indexing which value in dna we are accessing
     dnac = [0]*len(dna)                     # establishing the list for the ans
     while i < len(dna):
+        # I agree there are better ways of doing this. You should look up "Python reverse string"
+        # and break down your functions into two parts, one for reversing and the other for replacing with complements
         if dna[len(dna)-1-i]=='A':          # bad way to switch to the complement
             dnac[i] = 'T'
         elif dna[len(dna)-1-i]=='T':
@@ -110,6 +123,7 @@ def rest_of_ORF(dna):
     i = 0                                   # resetting i for indexing
     stopvalue = len(F)-1                    # the value that we cut out input. defaulted to return whole string
     while i < len(F):                       # while loop to change which codon we are looking at
+        # a shorthand: if F[i] in ['TGA', 'TAA', 'TAG']:
         if F[i] == 'TGA' or F[i] == 'TAA' or F[i] == 'TAG': #checks to see if the codon we are at is a stop codon
             stopvalue = i                   # make not of where the stop codon is
             break                           # stop the while loop because we are at the stop codon
@@ -151,6 +165,7 @@ def find_all_ORFs_oneframe(dna):
                 xi = xi + 1                # if we found one, then record the next one in the next section of X
             i = i + 1                      # iteration addition equation
     
+    # I've talked more about this in a comment later, but this is why you don't want to initialize the way you're doing now
     while 0 in X:                          # Does X have a bunch of zeros at the end?
         i = 0                              # reset the iteration variable
         while i < len(X):                  # Go through X,
@@ -302,3 +317,19 @@ def gene_finder(dna, threshold):
     A = filter(lambda a: a != 0, A)        # filters out all those zeroes that we made before
     
     return A                               # returns a list of potential protein sequences
+
+'''
+Impressive work, Charlie! I really enjoyed looking through your code.
+
+I have a few comments:
+    - No need to document every line. Some lines that are very obvious (ie. i = i + 1) don't
+      need explaining. 
+    - I would advise against initializing a list with [0]*len(). The concept makes sense for 
+      languages like C where you have to allocate specific amount of memory for an array (or list)
+      of length n. However with Python, it actually becomes rather inefficient to do it that way
+      because you're using memory that you don't need to use until much later (in a relative sense) 
+      in the process. In your find_all_ORFs_oneframe, you remove all 0s from the list, which
+      you normally wouldn't need had you initailized the list as an empty list.
+    - Great work with using Python's built-in list functions! Super awesome that you used
+      filter and lambda functions :-)
+'''
