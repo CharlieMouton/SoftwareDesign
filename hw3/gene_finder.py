@@ -166,7 +166,7 @@ def find_all_ORFs_oneframe(dna):
                 xi = xi + 1                # if we found one, then record the next one in the next section of X
             i = i + 1                      # iteration addition equation
     
-    # I've talked more about this in a comment later, but this is why you don't want to initialize the way you're doing now
+    # I've talked more about this in the PR later, but this is why you don't want to initialize the way you're doing now
     while 0 in X:                          # Does X have a bunch of zeros at the end?
         i = 0                              # reset the iteration variable
         while i < len(X):                  # Go through X,
@@ -318,19 +318,3 @@ def gene_finder(dna, threshold):
     A = filter(lambda a: a != 0, A)        # filters out all those zeroes that we made before
     
     return A                               # returns a list of potential protein sequences
-
-'''
-Impressive work, Charlie! I really enjoyed looking through your code.
-
-I have a few comments:
-    - No need to document every line. Some lines that are very obvious (ie. i = i + 1) don't
-      need explaining. 
-    - I would advise against initializing a list with [0]*len(). The concept makes sense for 
-      languages like C where you have to allocate specific amount of memory for an array (or list)
-      of length n. However with Python, it actually becomes rather inefficient to do it that way
-      because you're using memory that you don't need to use until much later (in a relative sense) 
-      in the process. In your find_all_ORFs_oneframe, you remove all 0s from the list, which
-      you normally wouldn't need had you initailized the list as an empty list.
-    - Great work with using Python's built-in list functions! Super awesome that you used
-      filter and lambda functions :-)
-'''
