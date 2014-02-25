@@ -42,6 +42,7 @@ def evaluate_random_function(f, x, y):
         return x        #BASE CASE                                   # is at the beginning of the list, and then performing that math
     if f[0] == 'y':     
         return y        #BASE CASE
+    # next two cases seem very redundant. What's the point of doing it?
     if f[0] == 'X':
         return evaluate_random_function(f[1],x,y)
     if f[0] == 'Y':
@@ -56,7 +57,6 @@ def evaluate_random_function(f, x, y):
         return math.sin(math.pi*evaluate_random_function(f[1],x,y))
     if f[0] == 'prod':
         return evaluate_random_function(f[1],x,y)*evaluate_random_function(f[2],x,y)
-    
 
 def remap_interval(val, input_interval_start, input_interval_end, output_interval_start, output_interval_end):
     """ Maps the input value that is in the interval[input_interval_start, input_interval_end]
@@ -87,6 +87,7 @@ def random_picture(filename):
     while x < 1600:                                                # iterate x from 0 to 1600
         y = 0                                                      # reset iteration variable
         while y < 900:                                             # iterate y from 0 to 900
+            # most certainly break the next three lines up so they're readable
             R = remap_interval(evaluate_random_function(fred,remap_interval(x,0,1600,-1,1),remap_interval(y,0,900,-1,1)),-1,1,0,255) # uses remap and evaluate to find the R value at this pixel
             G = remap_interval(evaluate_random_function(fblue,remap_interval(x,0,1600,-1,1),remap_interval(y,0,900,-1,1)),-1,1,0,255) # uses remap and evaluate to find the G value at this pixel
             B = remap_interval(evaluate_random_function(fgreen,remap_interval(x,0,1600,-1,1),remap_interval(y,0,900,-1,1)),-1,1,0,255) # uses remap and evaluate to find the B value at this pixel
